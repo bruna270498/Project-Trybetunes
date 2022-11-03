@@ -36,9 +36,15 @@ class Header extends Component {
             </h3>
           )}
         <nav>
-          <Link to="/search" data-testid="link-to-search">Procurar</Link>
-          <Link to="/favorites" data-testid="link-to-favorites">Favorites</Link>
-          <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
+          <Link className="Nav" to="/search" data-testid="link-to-search">Procurar</Link>
+          <Link
+            className="Nav"
+            to="/favorites"
+            data-testid="link-to-favorites"
+          >
+            Favorites
+          </Link>
+          <Link className="Nav" to="/profile" data-testid="link-to-profile">Perfil</Link>
         </nav>
       </header>
     );
