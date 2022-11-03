@@ -3,7 +3,6 @@ import Header from '../components/Header';
 
 class Search extends Component {
   state = {
-    name: '',
     isBtnDisabled: '',
   };
 
@@ -11,7 +10,6 @@ class Search extends Component {
     const { value } = target;
     const numMin = 2;
     this.setState({
-      name: value,
       isBtnDisabled: value.length >= numMin,
     });
   };
@@ -22,7 +20,6 @@ class Search extends Component {
       <div data-testid="page-search">
         <Header />
         <input
-          name="name"
           className="ArtNome"
           placeholder="Nome do Artista"
           data-testid="search-artist-input"
