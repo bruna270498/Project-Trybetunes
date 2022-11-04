@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
-import searcAlbums from '../services/searchAlbumsAPI';
+import searcAlbumsApi from '../services/searchAlbumsAPI';
 import Carregando from './Carregando';
 
 class Search extends Component {
@@ -22,7 +22,6 @@ class Search extends Component {
       const numMin = 2;
       this.setState({
         isBtnDisabled: value.length >= numMin,
-        artistaPesq: value,
       });
     });
   };
@@ -53,7 +52,7 @@ class Search extends Component {
               {albuns.map((art) => (
                 <section key={ art.artistId } className="secAlbum">
                   <img
-                    src={ art.artWorkUrl100 }
+                    src={ art.artworkUrl100 }
                     alt={ art.artistName }
                     className="imgAlbum"
                   />
@@ -63,7 +62,7 @@ class Search extends Component {
                     data-testid={ `link-to-album-${art.collectionId}` }
                     to={ `/album/${art.collectionId}` }
                   >
-                    Ver Album
+                    {art.collectionName}
                   </Link>
                 </section>
               ))}
@@ -75,8 +74,9 @@ class Search extends Component {
   AlbumPesquisa = async () => {
     const { artista } = this.state;
     this.carregandoTela(true);
-    const resposta = await searcAlbums(artista);
+    const resposta = await searcAlbumsApi(artista);
     this.setState({
+      artistaPesq: artista,
       albuns: resposta,
     }, this.PercorreAlbum);
     this.LimparInput();
@@ -98,7 +98,7 @@ class Search extends Component {
           onChange={ this.ValidarBtn }
         />
         <button
-          type="button"
+          type="submit"
           className="BtnProcura"
           data-testid="search-artist-button"
           disabled={ !isBtnDisabled }
