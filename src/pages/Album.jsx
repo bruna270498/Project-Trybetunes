@@ -1,21 +1,25 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Header from '../components/Header';
-import MusicCard from './MusicCard';
+import MusicCard from '../components/MusicCard';
 import musicsApi from '../services/musicsAPI';
 
 class Album extends Component {
   state = {
     album: {},
     musica: [],
+    favoritaMusi: [],
   };
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
     const [album, ...musica] = await musicsApi(id);
+    const favoritaMusi = await getFavoriteSongs();
     this.setState({
       album,
       musica,
+      favoritaMusi,
     });
   }
 
@@ -28,7 +32,12 @@ class Album extends Component {
           <h3 data-testid="album-name">{album.collectionName}</h3>
           <p data-testid="artist-name">{album.artistName}</p>
         </div>
-        <MusicCard musica={ musica } />
+        {musica.map((music) => (
+          <MusicCard
+            key={ music.trackId }
+            music={ music }
+            { ...this.state }
+          />))}
       </div>
     );
   }
