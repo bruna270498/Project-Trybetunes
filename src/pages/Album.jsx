@@ -21,10 +21,11 @@ class Album extends Component {
       musica,
       favoritaMusi,
     });
+    // console.log(favoritaMusi)
   }
 
   render() {
-    const { album, musica } = this.state;
+    const { album, musica, favoritaMusi } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -36,7 +37,9 @@ class Album extends Component {
           <MusicCard
             key={ music.trackId }
             music={ music }
-            { ...this.state }
+            favoritaMusi={ favoritaMusi }
+            // array={ [music] }
+            // { ...this.state }
           />))}
       </div>
     );
