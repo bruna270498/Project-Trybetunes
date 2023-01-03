@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import Carregando from '../pages/carregando1';
+import Carregando from '../pages/carregando3';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
 
 class MusicCard extends Component {
@@ -35,7 +35,7 @@ class MusicCard extends Component {
           <div className="MusicaDiv">
             <span className="nomeMusic">{trackName}</span>
             <audio
-              className="Music"
+              className="Musica"
               data-testid="audio-component"
               src={ previewUrl }
               controls
@@ -44,10 +44,12 @@ class MusicCard extends Component {
             </audio>
             <label
               htmlFor={ trackId }
+              className="favoritoCheck"
             >
               <input
                 data-testid={ `checkbox-music-${trackId}` }
                 type="checkbox"
+                // className="favoritoCheck"
                 name={ trackName }
                 id={ trackId }
                 checked={ check }
