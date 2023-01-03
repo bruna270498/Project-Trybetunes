@@ -4,6 +4,8 @@ import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import musicsApi from '../services/musicsAPI';
+import a from './cor.jpg';
+import simbol from './simbolo.jpeg';
 
 class Album extends Component {
   state = {
@@ -29,18 +31,38 @@ class Album extends Component {
     return (
       <div data-testid="page-album">
         <Header />
-        <div>
-          <h3 data-testid="album-name">{album.collectionName}</h3>
-          <p data-testid="artist-name">{album.artistName}</p>
+        <div className="divMusic">
+          <img className="imgSimbolo" src={ simbol } alt="simbolo" />
+          <img className="k" src={ a } alt="a" />
+          <div className="divImg">
+            <img
+              src={ album.artworkUrl100 }
+              alt={ album.artistName }
+              className="imgMusic"
+            />
+            <div className="music">
+              <h3
+                className="nomealbum"
+                data-testid="album-name"
+              >
+                {album.collectionName}
+
+              </h3>
+              <p className="Artista" data-testid="artist-name">{album.artistName}</p>
+            </div>
+          </div>
+          <div className="musicas">
+            {musica.map((music) => (
+              <MusicCard
+                key={ music.trackId }
+                music={ music }
+                favoritaMusi={ favoritaMusi }
+                // array={ [music] }
+                // { ...this.state }
+              />))}
+
+          </div>
         </div>
-        {musica.map((music) => (
-          <MusicCard
-            key={ music.trackId }
-            music={ music }
-            favoritaMusi={ favoritaMusi }
-            // array={ [music] }
-            // { ...this.state }
-          />))}
       </div>
     );
   }

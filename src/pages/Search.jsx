@@ -1,8 +1,10 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { BsSearch } from 'react-icons/bs';
 import Header from '../components/Header';
+import simbol from './simbolo.jpeg';
 import searcAlbumsApi from '../services/searchAlbumsAPI';
-import Carregando from './Carregando';
+import Carregando from './carregando2';
 
 class Search extends Component {
   state = {
@@ -50,15 +52,15 @@ class Search extends Component {
                 { `Resultado de álbuns de: ${artistaPesq}`}
               </h3>
               {albuns.map((art) => (
-                <section key={ art.artistId } className="secAlbum">
+                <section className="secAlbumFil" key={ art.artistName }>
                   <img
                     src={ art.artworkUrl100 }
                     alt={ art.artistName }
-                    className="imgAlbum"
+                    className="album "
                   />
-                  <h3 className="artistaAlbum">{art.artistName}</h3>
+                  <h3 className="nomeArtista">{art.artistName}</h3>
                   <Link
-                    className="LinkAlbum"
+                    className="nomeAlbum"
                     data-testid={ `link-to-album-${art.collectionId}` }
                     to={ `/album/${art.collectionId}` }
                   >
@@ -66,7 +68,8 @@ class Search extends Component {
                   </Link>
                 </section>
               ))}
-            </section>)
+            </section>
+          )
       ),
     });
   };
@@ -88,26 +91,33 @@ class Search extends Component {
     return (
       <div data-testid="page-search">
         <Header />
-        <input
-          className="ArtNome"
-          name="artista"
-          type="text"
-          value={ artista }
-          placeholder="Nome do Artista"
-          data-testid="search-artist-input"
-          onChange={ this.ValidarBtn }
-        />
-        <button
-          type="submit"
-          className="BtnProcura"
-          data-testid="search-artist-button"
-          disabled={ !isBtnDisabled }
-          onClick={ this.AlbumPesquisa }
-        >
-          Pesquisar
-        </button>
+        <div className="pesquisa">
+          <img className="imgSimbolo" src={ simbol } alt="simbolo" />
+          <div className="control">
+            <input
+              className="ArtNome input"
+              name="artista"
+              type="text"
+              value={ artista }
+              placeholder="Pesquisar"
+              data-testid="search-artist-input"
+              onChange={ this.ValidarBtn }
+            />
+            <button
+              type="submit"
+              className="BtnProcura BtnIcon "
+              data-testid="search-artist-button"
+              disabled={ !isBtnDisabled }
+              onClick={ this.AlbumPesquisa }
+            >
+              <i className="iconPes"><BsSearch /></i>
+            </button>
+          </div>
+        </div>
         {carregando && <Carregando />}
-        { resultArt }
+        <div className="divAlbum">
+          { resultArt }
+        </div>
       </div>
     );
   }
