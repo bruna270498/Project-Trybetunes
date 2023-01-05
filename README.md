@@ -14,6 +14,19 @@
   - Ver lista de músicas favoritas;
   - Ver o perfil da pessoa logada;
   - Editar o perfil da pessoa logada;
+ 
+## Layout da tela de login:
+
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/74669052/210869784-e3a39390-891f-4d20-a674-6c585661a982.gif)
+
+
+## Layout da aplicação:
+
+
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/74669052/210869822-72dd6c2f-9e54-41cc-a235-503f6917322a.gif)
+
+
 
 ## Habilidades desenvolvida:
 
@@ -39,16 +52,4 @@
 2. Instale as dependências:
 
 - ```npm install ```
-
-
-## Layout da tela de login:
-
-
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/74669052/210869784-e3a39390-891f-4d20-a674-6c585661a982.gif)
-
-
-## Layout da aplicação:
-
-
-![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/74669052/210869822-72dd6c2f-9e54-41cc-a235-503f6917322a.gif)
 
