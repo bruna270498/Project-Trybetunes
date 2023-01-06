@@ -51,5 +51,9 @@
 
 2. Instale as dependências:
 
-- ```npm install ```
+- ```npm install ```;
+
+3. Rode o comando:
+
+- ```npm start```;
 
